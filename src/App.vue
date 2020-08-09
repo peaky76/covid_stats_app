@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { eventBus } from './main';
 import InputForm from "./components/InputForm";
 import ResultDisplay from "./components/ResultDisplay";
 export default {
