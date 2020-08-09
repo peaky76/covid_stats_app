@@ -1,0 +1,36 @@
+{
+"areaType": "region",
+"areaName": "East Midlands"
+},
+{
+"areaType": "region",
+"areaName": "East of England"
+},
+{
+"areaType": "region",
+"areaName": "London"
+},
+{
+"areaType": "region",
+"areaName": "North East"
+},
+{
+"areaType": "region",
+"areaName": "North West"
+},
+{
+"areaType": "region",
+"areaName": "South East"
+},
+{
+"areaType": "region",
+"areaName": "South West"
+},
+{
+"areaType": "region",
+"areaName": "West Midlands"
+},
+{
+"areaType": "region",
+"areaName": "Yorkshire and The Humber"
+}
