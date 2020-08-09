@@ -4,18 +4,18 @@ The BBC has asked you to create an app which displays the latest COVID-19 statis
 
 ## MVP
 
-Allow the user to search COVID-19 stats by local authority, region or nation.
-The user should be able to filter the results by cases, hospital admissions and deaths.
-The user should be able to specify a date range for their searches.
-The data should be presented to the user in a meaningful visual form, such as a bar chart or pie chart.
+- Allow the user to search COVID-19 stats by local authority, region or nation.
+- The user should be able to filter the results by cases, hospital admissions and deaths.
+- The user should be able to specify a date range for their searches.
+- The data should be presented to the user in a meaningful visual form, such as a bar chart or pie chart.
 
 ## Extensions:
 
-The user should be able to compare stats between different locations over time.
-The user should be able to save searches for quick reference.
-Allow users to track their symptoms
-Display a UK map with COVID-19 hotspots
-Display Twitter updates from WHO and other relevant information providers
+- The user should be able to compare stats between different locations over time.
+- The user should be able to save searches for quick reference.
+- Allow users to track their symptoms
+- Display a UK map with COVID-19 hotspots
+- Display Twitter updates from WHO and other relevant information providers
 
 ## Project setup
 ```
