@@ -1,0 +1,22 @@
+<template>
+  <section>
+    <result-chart />
+    <result-detail />
+  </section>
+</template>
+
+<script>
+import ResultChart from "./result_sub/ResultChart";
+import ResultDetail from "./result_sub/ResultDetail";
+
+export default {
+  name: "result-display",
+  components: {
+    "result-chart": ResultChart,
+    "result-detail": ResultDetail,
+  },
+};
+</script>
+
+<style>
+</style>

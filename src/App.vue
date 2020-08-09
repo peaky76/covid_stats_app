@@ -1,10 +1,20 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <h1>COVID APP</h1>
+    <input-form />
+    <result-display />
+  </div>
 </template>
 
 <script>
+import InputForm from "./components/InputForm";
+import ResultDisplay from "./components/ResultDisplay";
 export default {
   name: "covid-stats-app",
+  components: {
+    "input-form": InputForm,
+    "result-display": ResultDisplay,
+  },
 };
 </script>
 
