@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { eventBus } from './main';
+import { eventBus } from '@/main';
 import InputForm from "./components/InputForm";
 import ResultDisplay from "./components/ResultDisplay";
 export default {
@@ -27,5 +27,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: palegoldenrod;
+  border: 1px solid black;
 }
+
 </style>

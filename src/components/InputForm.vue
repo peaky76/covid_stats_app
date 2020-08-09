@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { eventBus } from './main';
+import { eventBus } from '@/main';
 import InputCheckbox from "./input_sub/InputCheckbox";
 import InputDateSlider from "./input_sub/InputDateSlider";
 import InputLocationDropdown from "./input_sub/InputLocationDropdown";
