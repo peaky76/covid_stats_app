@@ -24,11 +24,13 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
   background-color: palegoldenrod;
   border: 1px solid black;
+}
+form, section, div {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 </style>

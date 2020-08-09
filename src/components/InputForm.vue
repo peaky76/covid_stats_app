@@ -2,7 +2,9 @@
   <form>
     <input-location-dropdown />
     <input-date-slider />
-    <input-checkbox v-for="index in 4" :key="index" />
+    <div id="input-checkboxes">
+      <input-checkbox v-for="index in 4" :key="index" />
+    </div>
   </form>
 </template>
 
@@ -22,5 +24,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+form {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: palevioletred;
+}
+#input-checkboxes {
+  width: 100%;
+}
 </style>

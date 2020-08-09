@@ -18,5 +18,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+section {
+  display: flex;
+  background-color: palegreen;
+}
 </style>
