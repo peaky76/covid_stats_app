@@ -1,11 +1,13 @@
 <template>
-  <div>{{result}}</div>
+  <div>
+    <p v-for="(item, index) in result.data" :key="index">{{item}}</p>
+  </div>
 </template>
 
 <script>
 export default {
   name: "result-detail",
-  props: ['result'],
+  props: ["result"],
 };
 </script>
 

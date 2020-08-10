@@ -2,13 +2,13 @@ const baseURL = "http://api.coronavirus.data.gov.uk/v1/data?";
 
 export default {
   getData(structureString) {
-    let filterString = "areaType=nation;areaName=Scotland";
+    let filterString = "areaType=utla;areaName=City of Edinburgh";
     // let structureString = {};
     const search =
       baseURL +
       "filters=" +
       filterString +
-      "&structure={" +
+      '&structure={"date":"date",' +
       structureString +
       "}";
     console.log(search);
