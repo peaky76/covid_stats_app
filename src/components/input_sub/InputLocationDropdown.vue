@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selectedLocation" v-if="locations" v-on:select="locationMethod">
+  <select v-model="selectedLocation" v-if="locations" v-on:change="locationMethod">
     <option :value="location" v-for="(location, index) in locations" :key="index">{{location.areaName}}</option>
   </select>
 </template>
@@ -21,6 +21,7 @@ export default {
   }, 
   methods: {
     locationMethod() {
+      console.log('pre-eventBus', this.selectedLocation)
       eventBus.$emit( 'location', this.selectedLocation )
     }
   }
