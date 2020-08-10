@@ -1,14 +1,23 @@
 <template>
-  <select>
-    <option v-for="index in 10" :key="index">A LOCATION OPTION</option>
+  <select v-if="locations">
+    <option v-for="(location, index) in locations" :key="index">{{location.areaName}}</option>
   </select>
 </template>
 
 <script>
 import { eventBus } from '@/main';
+import json from '@/db/locations.json';
 
 export default {
   name: "input-location-dropdown",
+  data() {
+    return {
+      locations: []
+    }
+  },
+  mounted() {
+    this.locations = json.filter(location => location.areaType != "ltla");
+  } 
 };
 </script>
 
