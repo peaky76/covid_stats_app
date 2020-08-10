@@ -22,11 +22,14 @@ export default {
     "result-display": ResultDisplay,
   },
   mounted() {
-    const baseURL = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation&structure={%22date%22:%22date%22,%22areaType%22:%22areaType%22,%22name%22:%22areaName%22,%20%22areaCode%22:%22areaCode%22}&latestBy=newCasesByPublishDate'
+    // const baseURL = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation&structure={%22date%22:%22date%22,%22areaType%22:%22areaType%22,%22name%22:%22areaName%22,%20%22areaCode%22:%22areaCode%22}&latestBy=newCasesByPublishDate'
 
-      fetch(baseURL)
-        .then(res => res.json())
-        .then(res => this.result = res);
+    //   fetch(baseURL)
+    //     .then(res => res.json())
+    //     .then(res => this.result = res);
+    eventBus.$on('data-recieved', (res) => {
+      this.result = res;
+    })
   }
     
 };

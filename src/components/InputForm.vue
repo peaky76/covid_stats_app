@@ -3,7 +3,7 @@
     <input-location-dropdown />
     <input-date-slider />
     <div id="input-checkboxes">
-      <input-checkbox v-for="index in 4" :key="index" />
+      <input-checkbox />
     </div>
   </form>
 </template>
