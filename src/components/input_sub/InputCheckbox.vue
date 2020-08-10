@@ -19,6 +19,7 @@
 <script>
 import { eventBus } from '@/main';
 import StatsService from '@/helpers/StatsService.js'
+import FilterBuilder from "@/helpers/FilterBuilder.js";
 
 export default {
   name: "input-checkbox",
@@ -47,8 +48,10 @@ export default {
         .then(res => eventBus.$emit('data-received', res))
         .catch(error=>console.log(error))
     }
-  }
-
+  },
+  mounted() {
+    this.filters = FilterBuilder.buildFilters();
+  },
 };
 </script>
 
