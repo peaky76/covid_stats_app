@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div>
+    <!-- <div>
       <input v-model="cases" type="checkbox" id="case-id" name="cases" value="cumCasesByPublishDate" v-on:change="arrayMethod" />
       <label for="case-id">Cases</label>
+    </div> -->
+    <div v-for="(filter, index) in filters" :key="index">
+      <input v-model="filter[index]" type="checkbox" :id="filter.name" v-on:change="arrayMethod" />
+      <label :for="filter.name">{{filter.prettyName}}</label>
     </div>
     <!-- <div>
       <input v-model="deaths" type="checkbox" id="death-id" name="deaths" value="cumDeathsByPublishDate" v-on:change="arrayMethod" />
@@ -36,6 +40,7 @@ export default {
     arrayMethod() {
       const filters = [];
       if (this.cases === true) {
+        // filter.prettyName: filterName
         this.filters.push('"cumCasesByPublishDate":"cumCasesByPublishDate"')
       };
       // if (this.deaths === true) {
