@@ -3,11 +3,18 @@
     <!-- <div>
       <input v-model="cases" type="checkbox" id="case-id" name="cases" value="cumCasesByPublishDate" v-on:change="arrayMethod" />
       <label for="case-id">Cases</label>
-    </div> -->
+    </div>-->
     <div v-for="(filter, index) in filters" :key="index">
-      <input v-model="filter[index]" type="checkbox" :id="filter.name" v-on:change="arrayMethod" />
+      <input
+        v-model="selectedFilters"
+        :value="filters[index]"
+        type="checkbox"
+        :id="filter.name"
+        v-on:change="arrayMethod"
+      />
       <label :for="filter.name">{{filter.prettyName}}</label>
     </div>
+
     <!-- <div>
       <input v-model="deaths" type="checkbox" id="death-id" name="deaths" value="cumDeathsByPublishDate" v-on:change="arrayMethod" />
       <label for="death-id">Deaths</label>
@@ -15,14 +22,13 @@
     <div>
       <input  v-model="admissions" type="checkbox" id="admission-id" name="admissions" value="hospitalCases" v-on:change="arrayMethod"/>
       <label for="admission-id">Hospital</label>
-    </div> -->
-
+    </div>-->
   </div>
 </template>
 
 <script>
-import { eventBus } from '@/main';
-import StatsService from '@/helpers/StatsService.js'
+import { eventBus } from "@/main";
+import StatsService from "@/helpers/StatsService.js";
 import FilterBuilder from "@/helpers/FilterBuilder.js";
 
 export default {
@@ -33,16 +39,16 @@ export default {
       cases: null,
       deaths: null,
       admissions: null,
-   
-    }
+      selectedFilters: [],
+    };
   },
   methods: {
     arrayMethod() {
       const filters = [];
       if (this.cases === true) {
         // filter.prettyName: filterName
-        this.filters.push('"cumCasesByPublishDate":"cumCasesByPublishDate"')
-      };
+        this.filters.push('"cumCasesByPublishDate":"cumCasesByPublishDate"');
+      }
       // if (this.deaths === true) {
       //   filters.push('"cumDeathsByPublishDate":"cumDeathsByPublishDate"')
       // };
@@ -50,9 +56,9 @@ export default {
       //   filters.push('"hospitalCases":"hospitalCases"')
       // };
       StatsService.getData(this.filters)
-        .then(res => eventBus.$emit('data-received', res))
-        .catch(error=>console.log(error))
-    }
+        .then((res) => eventBus.$emit("data-received", res))
+        .catch((error) => console.log(error));
+    },
   },
   mounted() {
     this.filters = FilterBuilder.buildFilters();
@@ -61,7 +67,6 @@ export default {
 </script>
 
 <style>
-
 </style>
 
 // newCasesByPublishDate
