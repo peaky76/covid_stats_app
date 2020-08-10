@@ -1,13 +1,20 @@
 <template>
   <div>
     <!-- <div>
-      <input v-model="cases" type="checkbox" id="case-id" name="cases" value="cumCasesByPublishDate" v-on:change="arrayMethod" />
+      <input
+        v-model="cases"
+        type="checkbox"
+        id="case-id"
+        name="cases"
+        value="cumCasesByPublishDate"
+        v-on:change="arrayMethod"
+      />
       <label for="case-id">Cases</label>
     </div>-->
     <div v-for="(filter, index) in filters" :key="index">
       <input
         v-model="selectedFilters"
-        :value="filters[index]"
+        :value="`&quot;` + filter.name + `&quot;:&quot;` + filter.name + `&quot;`"
         type="checkbox"
         :id="filter.name"
         v-on:change="arrayMethod"
@@ -44,18 +51,18 @@ export default {
   },
   methods: {
     arrayMethod() {
-      const filters = [];
-      if (this.cases === true) {
-        // filter.prettyName: filterName
-        this.filters.push('"cumCasesByPublishDate":"cumCasesByPublishDate"');
-      }
+      // const filters = [];
+      // if (this.cases === true) {
+      //   // filter.prettyName: filterName
+      //   this.filters.push('"cumCasesByPublishDate":"cumCasesByPublishDate"');
+      // }
       // if (this.deaths === true) {
       //   filters.push('"cumDeathsByPublishDate":"cumDeathsByPublishDate"')
       // };
       // if (this.admissions === true) {
       //   filters.push('"hospitalCases":"hospitalCases"')
-      // };
-      StatsService.getData(this.filters)
+      //`
+      StatsService.getData(this.selectedFilters.join(","))
         .then((res) => eventBus.$emit("data-received", res))
         .catch((error) => console.log(error));
     },

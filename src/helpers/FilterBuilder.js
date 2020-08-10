@@ -12,8 +12,8 @@ export default {
       "cumCasesByPublishDate",
       "newCasesBySpecimenDate",
       "cumCasesBySpecimenDate",
-      "maleCases",
-      "femaleCases",
+      // "maleCases",
+      // "femaleCases",
       "newAdmissions",
       "cumAdmissions",
       "cumAdmissionsByAge",
@@ -26,8 +26,8 @@ export default {
       "cumDeathsByPublishDate",
       "newDeathsByDeathDate",
       "cumDeathsByDeathDate",
-      "femaleDeaths",
-      "maleDeaths",
+      // "femaleDeaths",
+      // "maleDeaths",
     ];
     govApiFilters.forEach((filter) => {
       let prettyName = camelCaseToSentenceCase(filter);
