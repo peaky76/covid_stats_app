@@ -45,6 +45,7 @@ export default {
       // };
       StatsService.getData(this.filters)
         .then(res => eventBus.$emit('data-received', res))
+        .catch(error=>console.log(error))
     }
   }
 
