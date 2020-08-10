@@ -9,31 +9,29 @@ export default {
     let filterObjects = [];
     const govApiFilters = [
       "newCasesByPublishDate",
-      "cumCasesByPublishDate",
+      // "cumCasesByPublishDate",
       "newCasesBySpecimenDate",
-      "cumCasesBySpecimenDate",
+      // "cumCasesBySpecimenDate",
       // "maleCases",
       // "femaleCases",
       "newAdmissions",
-      "cumAdmissions",
-      "cumAdmissionsByAge",
-      "cumTestsByPublishDate",
-      "newTestsByPublishDate",
-      "covidOccupiedMVBeds",
-      "hospitalCases",
-      "plannedCapacityByPublishDate",
+      // "cumAdmissions",
+      // "cumAdmissionsByAge",
+      // "cumTestsByPublishDate",
+      // "newTestsByPublishDate",
+      // "covidOccupiedMVBeds",
+      // "hospitalCases",
+      // "plannedCapacityByPublishDate",
       "newDeathsByPublishDate",
-      "cumDeathsByPublishDate",
+      // "cumDeathsByPublishDate",
       "newDeathsByDeathDate",
-      "cumDeathsByDeathDate",
+      // "cumDeathsByDeathDate",
       // "femaleDeaths",
       // "maleDeaths",
     ];
     govApiFilters.forEach((filter) => {
       let prettyName = camelCaseToSentenceCase(filter);
-      if (prettyName.substring(0, 3) == "Cum") {
-        prettyName = prettyName.replace("Cum", "Cumulative");
-      }
+      prettyName = prettyName.replace("New", "");
       filterObjects.push({
         name: filter,
         prettyName: prettyName,
