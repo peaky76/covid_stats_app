@@ -43,8 +43,8 @@ export default {
       // if (this.admissions === true) {
       //   filters.push('"hospitalCases":"hospitalCases"')
       // };
-      StatsService.getData(filters)
-        .then(res => eventBus.$emit('data-recieved', res))
+      StatsService.getData(this.filters)
+        .then(res => eventBus.$emit('data-received', res))
     }
   }
 

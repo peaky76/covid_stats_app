@@ -27,7 +27,7 @@ export default {
     //   fetch(baseURL)
     //     .then(res => res.json())
     //     .then(res => this.result = res);
-    eventBus.$on('data-recieved', (res) => {
+    eventBus.$on('data-received', (res) => {
       this.result = res;
     })
   }
