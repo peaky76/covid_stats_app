@@ -16,11 +16,32 @@ import InputLocationDropdown from "./input_sub/InputLocationDropdown";
 
 export default {
   name: "input-form",
+  data() {
+    return {
+      selectedLocation: null,
+      selectedFilters: [],
+      selectedDates: []
+    }
+  },
   components: {
     "input-checkbox": InputCheckbox,
     "input-date-slider": InputDateSlider,
     "input-location-dropdown": InputLocationDropdown,
   },
+  methods() {
+    StatsService.getData(selectedLocation, selectedFilters)
+        .then((res) => eventBus.$emit("data-received", res))
+        .catch((error) => console.log(error));
+  },
+  mounted: (
+    eventBus.$on('filters', filters => {
+      this.selectedFilters = filters;
+    },
+    eventBus.$on('location'), location => {
+      this.selectedLocation = location;
+    }
+    )
+  )
 };
 </script>
 

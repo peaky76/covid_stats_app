@@ -61,10 +61,9 @@ export default {
       // };
       // if (this.admissions === true) {
       //   filters.push('"hospitalCases":"hospitalCases"')
-      //`
-      StatsService.getData(this.selectedFilters.join(","))
-        .then((res) => eventBus.$emit("data-received", res))
-        .catch((error) => console.log(error));
+      const filters = this.selectedFilters.join(",")
+      eventBus.$emit('filters', filters)
+      
     },
   },
   mounted() {

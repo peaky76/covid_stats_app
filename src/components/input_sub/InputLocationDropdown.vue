@@ -1,6 +1,6 @@
 <template>
-  <select v-if="locations">
-    <option v-for="(location, index) in locations" :key="index">{{location.areaName}}</option>
+  <select v-model="selectedLocation" v-if="locations" v-on:select="locationMethod">
+    <option :value="location" v-for="(location, index) in locations" :key="index">{{location.areaName}}</option>
   </select>
 </template>
 
@@ -12,12 +12,18 @@ export default {
   name: "input-location-dropdown",
   data() {
     return {
-      locations: []
+      locations: [],
+      selectedLocation: null
     }
   },
   mounted() {
     this.locations = json.filter(location => location.areaType != "ltla");
-  } 
+  }, 
+  methods: {
+    locationMethod() {
+      eventBus.$emit( 'location', this.selectedLocation )
+    }
+  }
 };
 </script>
 
