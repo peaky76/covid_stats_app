@@ -1,6 +1,6 @@
 <template>
-<!-- v-on:change="refreshData" -->
-  <form>
+
+  <form v-on:change="refreshData">
     <input-location-dropdown />
     <input-date-slider/>
     <div id="input-checkboxes">
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     refreshData() {
-    StatsService.getData(this.selectedLocation, this.selectedFilters, this.selectedDate)
+    StatsService.getData(this.selectedLocation, this.selectedFilters, this.selectedDates)
         .then((res) => eventBus.$emit('data-received', res))
         .catch((error) => console.log(error));
     }
@@ -44,7 +44,11 @@ export default {
     eventBus.$on('location', location => {
       console.log('post-eventBus', location)
       this.selectedLocation = location;
+    }),
+    eventBus.$on('dates', dates => {
+      this.selectedDates = dates;
     })
+
   }
 };
 </script>

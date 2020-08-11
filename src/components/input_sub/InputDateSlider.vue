@@ -37,6 +37,8 @@ export default {
     }
     console.log(this.dateRanges)
 
+    eventBus.$emit("dates", this.dateRanges);
+
     // let dates = startMoment.add(1, 'days')
     // console.log('dates', dates.format("YYYY-MM-DD"))
     // this.duration = moment.duration(endMoment.diff(startMoment, 'days'))
