@@ -11,7 +11,8 @@
     "highcharts": "^8.1.2",
     "moment": "^2.27.0",
     "vue": "^2.6.11",
-    "vue-google-charts": "^0.3.3"
+    "vue-google-charts": "^0.3.3",
+    "vue-select": "^3.10.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

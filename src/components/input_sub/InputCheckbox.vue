@@ -74,36 +74,4 @@ input:disabled + label {
 }
 </style>
 
-// newCasesByPublishDate
-// cumCasesByPublishDate
-// newCasesBySpecimenDate
-// cumCasesBySpecimenDate
-// maleCases
-// femaleCases
-
-// newAdmissions
-// cumAdmissions
-// cumAdmissionsByAge
-
-// cumTestsByPublishDate
-// newTestsByPublishDate
-
-// covidOccupiedMVBeds
-// hospitalCases
-
-// plannedCapacityByPublishDate
-
-// newDeathsByPublishDate
-// cumDeathsByPublishDate
-// newDeathsByDeathDate
-// cumDeathsByDeathDate
-// femaleDeaths
-// maleDeaths
-
-
-
-'"filterPrettyName": "filterActualName"'
-
-
-&structure={"banana":"cumCasesBySpecimenDate","deaths":"newDeathsByPublishDate"}'
 
