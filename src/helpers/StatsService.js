@@ -56,7 +56,7 @@ export default {
       "areaType=" +
       location.areaType +
       dateString(date) +
-      '&structure={"date":"date",' +
+      '&structure={"date":"date","areaName":"areaName",' +
       filters +
       "}";
     return fetch(search).then((res) => res.json());
