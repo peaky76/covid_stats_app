@@ -21,6 +21,11 @@ The BBC has asked you to create an app which displays the latest COVID-19 statis
 ```
 npm install
 ```
+### Packages to install
+```
+npm i moment
+npm i vue-google-charts
+```
 
 ### Compiles and hot-reloads for development
 ```
