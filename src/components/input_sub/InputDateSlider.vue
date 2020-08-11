@@ -16,7 +16,7 @@ export default {
     return {
       startDate: '',
       endDate: '',
-      duration: null
+      dateRanges: []
     }
   },
   mounted() {
@@ -27,11 +27,21 @@ export default {
       eventBus.$emit()
     },
     durationConverter() {
-      const startMoment = moment(this.startDate)
+    const startMoment = moment(this.startDate)
     const endMoment = moment(this.endDate)
+    console.log('startMoment:', startMoment)
+    console.log('endMoment:', endMoment)
 
-    this.duration = moment.duration(endMoment.diff(startMoment, 'days'))
-    console.log('duration:', this.duration)
+    for (let dates = startMoment; dates <= endMoment; dates.add(1, 'days')) {
+      this.dateRanges.push(dates.format("YYYY-MM-DD"))
+    }
+    console.log(this.dateRanges)
+
+    // let dates = startMoment.add(1, 'days')
+    // console.log('dates', dates.format("YYYY-MM-DD"))
+    // this.duration = moment.duration(endMoment.diff(startMoment, 'days'))
+    // console.log('duration:', this.duration)
+    // console.log(this.duration().format())
     }
   }
 };
