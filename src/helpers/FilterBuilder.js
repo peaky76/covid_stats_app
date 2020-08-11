@@ -30,8 +30,12 @@ export default {
       // "maleDeaths",
     ];
     govApiFilters.forEach((filter) => {
-      let prettyName = camelCaseToSentenceCase(filter);
-      prettyName = prettyName.replace("New", "");
+      // let prettyName = camelCaseToSentenceCase(filter);
+      let filterReadable = camelCaseToSentenceCase(filter);
+      let words = filterReadable.split(" ");
+      let stat = words[1];
+      let criterion = words.slice(2).join(" ");
+      // let prettyName = filterReadable.replace("New", "");
 
       let exclusions = [];
       // Exclusions for nations
@@ -47,7 +51,9 @@ export default {
 
       filterObjects.push({
         name: filter,
-        prettyName: prettyName,
+        stat: stat,
+        criterion: criterion,
+        // prettyName: prettyName,
         excludeFor: exclusions,
       });
     });

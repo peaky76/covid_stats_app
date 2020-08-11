@@ -1,16 +1,19 @@
 <template>
-  <span>
-    <span class="filter-checkbox" v-for="(filter, index) in filters" :key="index">
-      <input
-        v-model="selectedFilters"
-        :value="`&quot;` + filter.name + `&quot;:&quot;` + filter.name + `&quot;`"
-        type="checkbox"
-        :id="filter.name"
-        v-on:change="sendFilters"
-        :disabled="filter.excludeFor.includes(currentAreaType)"
-      />
-      <label :for="filter.name">{{filter.prettyName}}</label>
-    </span>
+  <span id="filters">
+    <fieldset v-for="(stat, index) in stats" :key="index">
+      <legend>{{stat}}</legend>
+      <span class="filter-checkbox" v-for="(filter, index) in checkboxesForStat(stat)" :key="index">
+        <input
+          v-model="selectedFilters"
+          :value="`&quot;` + filter.name + `&quot;:&quot;` + filter.name + `&quot;`"
+          type="checkbox"
+          :id="filter.name"
+          v-on:change="sendFilters"
+          :disabled="filter.excludeFor.includes(currentAreaType)"
+        />
+        <label :for="filter.name">{{filter.criterion}}</label>
+      </span>
+    </fieldset>
   </span>
 </template>
 
@@ -28,12 +31,21 @@ export default {
       currentAreaType: null,
     };
   },
+  computed: {
+    stats() {
+      const allStats = this.filters.map((filter) => filter.stat);
+      const distinctStats = [...new Set(allStats)];
+      return distinctStats;
+    },
+  },
   methods: {
+    checkboxesForStat(stat) {
+      return this.filters.filter((filter) => filter.stat === stat);
+    },
     sendFilters() {
       const filters = this.selectedFilters.join(",");
       eventBus.$emit("filters", filters);
     },
-    toggleFilters() {},
   },
   mounted() {
     this.filters = FilterBuilder.buildFilters();
@@ -46,6 +58,14 @@ export default {
 </script>
 
 <style scoped>
+#filters {
+  display: flex;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 12rem;
+}
 .filter-checkbox {
   margin-right: 1rem;
 }
