@@ -24,13 +24,16 @@ export default {
   mounted() {
     this.locations = json
       .filter((location) => location.areaType != "ltla")
-      .map((location) =>
-        Object({
-          areaName: location.areaName,
-          areaType: location.areaType,
-          nation: LocationHelper.getNation(location.areaCode),
-        })
-      );
+      // Sort by area code, i.e. all England together, all Scotland together
+      .sort((a, b) => (a.areaCode[0] > b.areaCode[0] ? 1 : -1));
+    // Sort by area type, i.e. country first, then region, then utla
+    // .map((location) =>
+    //   Object({
+    //     areaName: location.areaName,
+    //     areaType: location.areaType,
+    //     nation: LocationHelper.getNation(location.areaCode),
+    //   })
+    // );
   },
   methods: {
     locationMethod() {
