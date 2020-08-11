@@ -25,6 +25,24 @@ export default {
         height: 480,
         backgroundColor: "#98fb98",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
+        vAxis: {
+          gridlines: {
+            count: 5,
+          },
+        },
+        hAxis: {
+          textPosition: "out",
+          minTextSpacing: 100,
+          showEveryText: 7,
+          viewWindow: {
+            min: 0,
+          },
+          slantedText: true,
+        },
+        animation: {
+          duration: 1000,
+          easing: "in-out",
+        },
       },
     };
   },
