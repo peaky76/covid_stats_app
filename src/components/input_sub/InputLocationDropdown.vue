@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     locationMethod() {
-      console.log("pre-eventBus", this.selectedLocation);
+      // console.log("pre-eventBus", this.selectedLocation);
       eventBus.$emit("location", this.selectedLocation);
       eventBus.$emit("selected-area-type", this.selectedLocation.areaType);
     },

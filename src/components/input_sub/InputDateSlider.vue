@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input v-model="startDate" type="date" id="start-date" v-on:change="dateRange" />
-    <input v-model="endDate" type="date" id="end-date" v-on:change="dateRange" />
+    <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
+    <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
   },
   mounted() {},
   methods: {
-    durationConverter() {
+    sendDates() {
       eventBus.$emit("dates", this.dateRange);
     },
     // let dates = startMoment.add(1, 'days')

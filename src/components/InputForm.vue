@@ -1,5 +1,4 @@
 <template>
-
   <form v-on:change="refreshData">
     <div id="input-selectors">
       <input-location-dropdown />
@@ -34,8 +33,12 @@ export default {
   },
   methods: {
     refreshData() {
-    StatsService.getData(this.selectedLocation, this.selectedFilters, this.selectedDates)
-        .then((res) => eventBus.$emit('data-received', res))
+      StatsService.getMultipleDates(
+        this.selectedLocation,
+        this.selectedFilters,
+        this.selectedDates
+      )
+        .then((res) => eventBus.$emit("data-received", res))
         .catch((error) => console.log(error));
     },
   },
@@ -43,15 +46,15 @@ export default {
     eventBus.$on("filters", (filters) => {
       this.selectedFilters = filters;
     }),
-    eventBus.$on('location', location => {
-      console.log('post-eventBus', location)
-      this.selectedLocation = location;
-    }),
-    eventBus.$on('dates', dates => {
-      this.selectedDates = dates;
-    })
-
-  }
+      eventBus.$on("location", (location) => {
+        // console.log("post-eventBus", location);
+        this.selectedLocation = location;
+      }),
+      eventBus.$on("dates", (dates) => {
+        console.log("post-eBus dates:", dates);
+        this.selectedDates = dates;
+      });
+  },
 };
 </script>
 
