@@ -20,7 +20,15 @@ export default {
   computed: {
     dateRange() {
       const startMoment = moment(this.startDate);
-      const endMoment = moment(this.endDate);
+      let endMoment;
+
+      if (this.endDate) {
+        endMoment = moment(this.endDate);
+      } else {
+        endMoment = moment(this.startDate);
+      }
+
+      console.log(endMoment);
       let allDates = [];
       for (let dates = startMoment; dates <= endMoment; dates.add(1, "days")) {
         allDates.push(dates.format("YYYY-MM-DD"));
@@ -28,7 +36,6 @@ export default {
       return allDates;
     },
   },
-  mounted() {},
   methods: {
     sendDates() {
       eventBus.$emit("dates", this.dateRange);

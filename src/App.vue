@@ -2,20 +2,31 @@
   <div id="app">
     <h1>COVID APP</h1>
     <input-form />
-    <result-display :result="result"/>
+    <result-display :result="result" />
   </div>
 </template>
 
 <script>
-import { eventBus } from '@/main';
+import { eventBus } from "@/main";
 import InputForm from "./components/InputForm";
 import ResultDisplay from "./components/ResultDisplay";
 export default {
   name: "covid-stats-app",
   data() {
     return {
-      result: 'null'
+      fullData: null,
     };
+  },
+  computed: {
+    result() {
+      if (this.fullData) {
+        let unpackedData = [];
+        this.fullData.forEach((searchResult) => {
+          unpackedData.push(searchResult.data[0]);
+        });
+        return unpackedData;
+      }
+    },
   },
   components: {
     "input-form": InputForm,
@@ -27,11 +38,10 @@ export default {
     //   fetch(baseURL)
     //     .then(res => res.json())
     //     .then(res => this.result = res);
-    eventBus.$on('data-received', (res) => {
-      this.result = res;
-    })
-  }
-    
+    eventBus.$on("data-received", (res) => {
+      this.fullData = res;
+    });
+  },
 };
 </script>
 
@@ -43,10 +53,11 @@ export default {
   background-color: palegoldenrod;
   border: 1px solid black;
 }
-form, section, div {
+form,
+section,
+div {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem;
 }
-
 </style>
