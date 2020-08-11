@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 v-if="result">{{result[0].areaName}}</h3>
-    <h4>{{this.dateGetter}}</h4> -->
+    <h4 v-if="result">Range of Dates: {{result[0].date}} to {{result[result.length - 1].date}}</h4>
     <p v-for="(item, index) in result" :key="index">{{item}}</p>
   </div>
 </template>
@@ -17,13 +17,22 @@ export default {
     }
   },
   computed: {
-    dateGetter() {
+    firstDateGetter() {
       if (this.results) {
         this.startDate = result[0].date
-        this.endDate = result[result.length - 1].date
-        return `Range of Dates: ${startDate} to ${endDate}`
+        // this.endDate = result[result.length - 1].date
+        return this.startDate
       } else {
-        return 'No date(s) selected';
+        return 'No start date selected';
+      }
+    },
+    lastDateGetter() {
+      if (this.results) {
+        // this.startDate = result[0].date
+        this.endDate = result[result.length - 1].date
+        return this.endDate
+      } else {
+        return 'No end date selected';
       }
     },
     getAreaName() {
