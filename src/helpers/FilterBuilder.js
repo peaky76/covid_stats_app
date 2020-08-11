@@ -32,10 +32,23 @@ export default {
     govApiFilters.forEach((filter) => {
       let prettyName = camelCaseToSentenceCase(filter);
       prettyName = prettyName.replace("New", "");
+
+      let exclusions = [];
+      // Exclusions for nations
+
+      // Exclusions for regions
+      if (filter.includes("Publish") || filter.includes("Admissions")) {
+        exclusions.push("region");
+      }
+      // Exclusions for utlas
+      if (filter.includes("Deaths") || filter.includes("Admissions")) {
+        exclusions.push("utla");
+      }
+
       filterObjects.push({
         name: filter,
         prettyName: prettyName,
-        excludeFor: ["utla", "region"],
+        excludeFor: exclusions,
       });
     });
 

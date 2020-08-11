@@ -25,7 +25,7 @@ export default {
     return {
       filters: [],
       selectedFilters: [],
-      currentAreaType: "nation",
+      currentAreaType: "utla",
     };
   },
   methods: {
