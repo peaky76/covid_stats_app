@@ -1,7 +1,7 @@
 <template>
   <section>
+    <result-detail :result="result" />
     <result-chart />
-    <result-detail :result="result"/>
   </section>
 </template>
 
@@ -11,7 +11,7 @@ import ResultDetail from "./result_sub/ResultDetail";
 
 export default {
   name: "result-display",
-  props: ['result'],
+  props: ["result"],
   components: {
     "result-chart": ResultChart,
     "result-detail": ResultDetail,
