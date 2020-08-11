@@ -29,6 +29,7 @@ export default {
     chartData() {
       let dataToDisplay = [];
       if (this.result) {
+        const newHeading = this.headings.splice(1, 1)
         dataToDisplay.push(this.headings);
         this.dataRows.forEach((dataRow) => {
           dataToDisplay.push(dataRow);
