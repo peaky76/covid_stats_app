@@ -25,7 +25,7 @@ export default {
     return {
       filters: [],
       selectedFilters: [],
-      currentAreaType: "utla",
+      currentAreaType: null,
     };
   },
   methods: {
@@ -37,6 +37,10 @@ export default {
   },
   mounted() {
     this.filters = FilterBuilder.buildFilters();
+
+    eventBus.$on("selected-area-type", (areaType) => {
+      this.currentAreaType = areaType;
+    });
   },
 };
 </script>
