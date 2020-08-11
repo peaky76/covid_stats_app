@@ -4,7 +4,7 @@
       :value="location"
       v-for="(location, index) in locations"
       :key="index"
-    >{{location.nation}}: {{location.areaType}} : {{location.areaName}}</option>
+    >{{getRank(location.areaType)}}: {{location.areaType}} : {{location.areaName}}</option>
   </select>
 </template>
 
@@ -24,9 +24,8 @@ export default {
   mounted() {
     this.locations = json
       .filter((location) => location.areaType != "ltla")
-      // Sort by area code, i.e. all England together, all Scotland together
-      .sort((a, b) => (a.areaCode[0] > b.areaCode[0] ? 1 : -1));
-    // Sort by area type, i.e. country first, then region, then utla
+      .sort((a, b) => LocationHelper.sortLocations(a, b));
+
     // .map((location) =>
     //   Object({
     //     areaName: location.areaName,
@@ -39,6 +38,9 @@ export default {
     locationMethod() {
       console.log("pre-eventBus", this.selectedLocation);
       eventBus.$emit("location", this.selectedLocation);
+    },
+    getRank(areaType) {
+      return LocationHelper.getAreaTypeRank(areaType);
     },
   },
 };
