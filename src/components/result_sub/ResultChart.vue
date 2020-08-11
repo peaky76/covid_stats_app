@@ -15,13 +15,8 @@ export default {
   },
   data() {
     return {
-      // Array will be automatically processed with visualization.arrayToDataTable function
-
       chartOptions: {
-        chart: {
-          title: "Coronavirus Stats",
-          subtitle: "Hull",
-        },
+        title: "Placename Needs to Go Here",
         height: 480,
         backgroundColor: "#98fb98",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
