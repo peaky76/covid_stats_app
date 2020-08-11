@@ -61,4 +61,10 @@ export default {
       "}";
     return fetch(search).then((res) => res.json());
   },
+  getMultipleDates(location, filters, dates) {
+    const promises = dates.map(date => {
+      return this.getData(location, filters, date)
+    })
+    return Promise.all(promises)
+  }
 };
