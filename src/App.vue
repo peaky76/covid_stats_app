@@ -14,7 +14,7 @@ export default {
   name: "covid-stats-app",
   data() {
     return {
-      result: null
+      result: 'null'
     };
   },
   components: {

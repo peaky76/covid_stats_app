@@ -1,5 +1,6 @@
 <template>
-  <form v-on:change="refreshData">
+<!-- v-on:change="refreshData" -->
+  <form>
     <input-location-dropdown />
     <input-date-slider/>
     <div id="input-checkboxes">
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     refreshData() {
-    StatsService.getData(this.selectedLocation, this.selectedFilters)
+    StatsService.getData(this.selectedLocation, this.selectedFilters, this.selectedDate)
         .then((res) => eventBus.$emit('data-received', res))
         .catch((error) => console.log(error));
     }

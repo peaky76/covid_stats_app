@@ -1,11 +1,11 @@
 const baseURL = "http://api.coronavirus.data.gov.uk/v1/data?";
 
 // API Issues:
-// Call using newCasesByPublishDate, newCasesBySpecimenDate, newAdmissions,
-// newDeathsByPublishDate, newDeathsByDeathDate
-
+// Call using newCasesByPubli, dateshDate, newCasesBySpecimenDate, newAdmissions,
+// newDe// athsByPublishDate, newDeathsByDeathDate
+// 
 // Nations give all stats, except:
-//      Scotland doesn't give deaths by death date
+//      // Scotland doesn't give deaths by death date
 //      N Ireland doesn't give deaths by death date or cases by specimen date
 
 // Regions only give cases by specimen date, deaths by death date, no admissions
