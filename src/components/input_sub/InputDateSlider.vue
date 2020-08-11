@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input v-model="startDate" type="date" id="start-date" v-on:change="durationConverter">
-    <input v-model="endDate" type="date" id="end-date" v-on:change="durationConverter">
+    <input v-model="startDate" type="date" id="start-date" v-on:change="dateRange">
+    <input v-model="endDate" type="date" id="end-date" v-on:change="dateRange">
     <button >Duration </button>
   </div>
 </template>
@@ -15,36 +15,33 @@ export default {
   data() {
     return {
       startDate: '',
-      endDate: '',
-      dateRanges: []
+      endDate: ''
     }
+  },
+  computed: {
+    dateRange() {
+      const startMoment = moment(this.startDate)
+      const endMoment = moment(this.endDate)
+      let allDates = []
+      for (let dates = startMoment; dates <= endMoment; dates.add(1, 'days')) {
+        allDates.push(dates.format("YYYY-MM-DD"));
+      }
+    return allDates;
+    },
   },
   mounted() {
     
   },
   methods: {
-    dateMethod() {
-      eventBus.$emit()
-    },
     durationConverter() {
-    const startMoment = moment(this.startDate)
-    const endMoment = moment(this.endDate)
-    console.log('startMoment:', startMoment)
-    console.log('endMoment:', endMoment)
-
-    for (let dates = startMoment; dates <= endMoment; dates.add(1, 'days')) {
-      this.dateRanges.push(dates.format("YYYY-MM-DD"))
+      eventBus.$emit("dates", this.dateRanges);
     }
-    console.log(this.dateRanges)
-
-    eventBus.$emit("dates", this.dateRanges);
-
     // let dates = startMoment.add(1, 'days')
     // console.log('dates', dates.format("YYYY-MM-DD"))
     // this.duration = moment.duration(endMoment.diff(startMoment, 'days'))
     // console.log('duration:', this.duration)
     // console.log(this.duration().format())
-    }
+    
   }
 };
 </script>
