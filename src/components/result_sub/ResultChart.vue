@@ -1,8 +1,6 @@
 <template>
   <div id="chart-area">
-    {{headings}}
-    {{dataRows}}
-    <!-- <GChart type="LineChart" :data="chartData" :options="chartOptions" /> -->
+    <GChart type="LineChart" :data="chartData" :options="chartOptions" />
   </div>
 </template>
 
@@ -18,16 +16,7 @@ export default {
   data() {
     return {
       // Array will be automatically processed with visualization.arrayToDataTable function
-      chartData: [
-        // {date: 2020-08-01, newDeathByDeathDate: 265}
-        // {date: 2020-08-02, newDeathByDeathDate: 268}
-        // {date: 2020-08-03, newDeathByDeathDate: 265}
-        // ["Date", "Deaths"],
-        // ["1 Aug", 200],
-        // ["2 Aug", 250],
-        // ["3 Aug", 300],
-        // ["4 Aug", 350],
-      ],
+
       chartOptions: {
         chart: {
           title: "Coronavirus Stats",
@@ -37,6 +26,16 @@ export default {
     };
   },
   computed: {
+    chartData() {
+      let dataToDisplay = [];
+      if (this.result) {
+        dataToDisplay.push(this.headings);
+        this.dataRows.forEach((dataRow) => {
+          dataToDisplay.push(dataRow);
+        });
+      }
+      return dataToDisplay;
+    },
     headings() {
       if (this.result) {
         return Object.keys(this.result[0]);
