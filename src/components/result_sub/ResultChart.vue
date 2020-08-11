@@ -1,5 +1,5 @@
 <template>
-  <div id="chart-area">
+  <div v-if="result" id="chart-area">
     <GChart type="LineChart" :data="chartData" :options="chartOptions" />
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
           title: "Coronavirus Stats",
           subtitle: "Hull",
         },
+        height: 480,
+        backgroundColor: "#98fb98",
+        colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
       },
     };
   },
@@ -60,11 +63,7 @@ export default {
 
 <style scoped>
 #chart-area {
-  width: 300px;
-}
-div {
-  border: 0;
+  width: 70%;
   padding: 0;
-  margin: 0;
 }
 </style>

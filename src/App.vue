@@ -55,7 +55,8 @@ export default {
 }
 form,
 section,
-div {
+form > div,
+section > div {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem;
