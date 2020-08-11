@@ -26,6 +26,7 @@ export default {
         backgroundColor: "#98fb98",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
         vAxis: {
+          format: "0",
           gridlines: {
             count: 5,
           },
@@ -39,9 +40,13 @@ export default {
           },
           slantedText: true,
         },
+        legend: {
+          position: "bottom",
+        },
         animation: {
           duration: 1000,
           easing: "in-out",
+          startup: true,
         },
       },
     };
