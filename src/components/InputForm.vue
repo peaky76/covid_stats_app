@@ -56,8 +56,6 @@ form {
 }
 #input-selectors,
 #input-checkboxes {
-}
-#input-selectors {
   display: flex;
   align-items: center;
 }
