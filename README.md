@@ -25,6 +25,7 @@ npm install
 ```
 npm i moment
 npm i vue-google-charts
+npm i vue-select
 ```
 
 ### Compiles and hot-reloads for development
