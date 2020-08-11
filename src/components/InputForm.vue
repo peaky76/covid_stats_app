@@ -33,13 +33,19 @@ export default {
   },
   methods: {
     refreshData() {
-      StatsService.getMultipleDates(
-        this.selectedLocation,
-        this.selectedFilters,
-        this.selectedDates
-      )
-        .then((res) => eventBus.$emit("data-received", res))
-        .catch((error) => console.log(error));
+      if (
+        this.selectedLocation &&
+        this.selectedFilters.length > 0 &&
+        this.selectedDates.length > 0
+      ) {
+        StatsService.getMultipleDates(
+          this.selectedLocation,
+          this.selectedFilters,
+          this.selectedDates
+        )
+          .then((res) => eventBus.$emit("data-received", res))
+          .catch((error) => console.log(error));
+      }
     },
   },
   mounted() {
