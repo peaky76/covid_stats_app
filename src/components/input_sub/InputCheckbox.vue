@@ -1,34 +1,15 @@
 <template>
   <span>
     <span class="filter-checkbox" v-for="(filter, index) in filters" :key="index">
-      <!-- <div>
-      <input
-        v-model="cases"
-        type="checkbox"
-        id="case-id"
-        name="cases"
-        value="cumCasesByPublishDate"
-        v-on:change="arrayMethod"
-      />
-      <label for="case-id">Cases</label>
-      </div>-->
       <input
         v-model="selectedFilters"
         :value="`&quot;` + filter.name + `&quot;:&quot;` + filter.name + `&quot;`"
         type="checkbox"
         :id="filter.name"
-        v-on:change="arrayMethod"
+        v-on:change="sendFilters"
+        :disabled="filter.excludeFor.includes(currentAreaType)"
       />
       <label :for="filter.name">{{filter.prettyName}}</label>
-
-      <!-- <div>
-      <input v-model="deaths" type="checkbox" id="death-id" name="deaths" value="cumDeathsByPublishDate" v-on:change="arrayMethod" />
-      <label for="death-id">Deaths</label>
-    </div>
-    <div>
-      <input  v-model="admissions" type="checkbox" id="admission-id" name="admissions" value="hospitalCases" v-on:change="arrayMethod"/>
-      <label for="admission-id">Hospital</label>
-      </div>-->
     </span>
   </span>
 </template>
@@ -43,27 +24,16 @@ export default {
   data() {
     return {
       filters: [],
-      cases: null,
-      deaths: null,
-      admissions: null,
       selectedFilters: [],
+      currentAreaType: "nation",
     };
   },
   methods: {
-    arrayMethod() {
-      // const filters = [];
-      // if (this.cases === true) {
-      //   // filter.prettyName: filterName
-      //   this.filters.push('"cumCasesByPublishDate":"cumCasesByPublishDate"');
-      // }
-      // if (this.deaths === true) {
-      //   filters.push('"cumDeathsByPublishDate":"cumDeathsByPublishDate"')
-      // };
-      // if (this.admissions === true) {
-      //   filters.push('"hospitalCases":"hospitalCases"')
+    sendFilters() {
       const filters = this.selectedFilters.join(",");
       eventBus.$emit("filters", filters);
     },
+    toggleFilters() {},
   },
   mounted() {
     this.filters = FilterBuilder.buildFilters();
@@ -71,9 +41,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .filter-checkbox {
   margin-right: 1rem;
+}
+input:disabled + label {
+  color: grey;
 }
 </style>
 

@@ -35,6 +35,7 @@ export default {
       filterObjects.push({
         name: filter,
         prettyName: prettyName,
+        excludeFor: ["utla", "region"],
       });
     });
 
