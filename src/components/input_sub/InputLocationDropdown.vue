@@ -4,7 +4,8 @@
       :value="location"
       v-for="(location, index) in locations"
       :key="index"
-    >{{location.nation}}: {{location.areaType}} : {{location.areaName}}</option>
+      :class="location.areaType"
+    >{{location | locationFormatter}}</option>
   </select>
 </template>
 
@@ -21,27 +22,50 @@ export default {
       selectedLocation: null,
     };
   },
+  filters: {
+    locationFormatter: function (location) {
+      if (location.areaType === "nation") {
+        return location.areaName.toUpperCase();
+      } else if (location.areaType === "region") {
+        return "~" + location.areaName + "~";
+      } else {
+        return location.areaName;
+      }
+    },
+  },
   mounted() {
     this.locations = json
-      .filter((location) => location.areaType != "ltla")
-      .map((location) =>
-        Object({
-          areaName: location.areaName,
-          areaType: location.areaType,
-          nation: LocationHelper.getNation(location.areaCode),
-        })
-      );
+      .filter(
+        (location) =>
+          location.areaType != "ltla" && location.areaType != "nhsRegion"
+      )
+      .sort((a, b) => LocationHelper.sortLocations(a, b));
   },
   methods: {
     locationMethod() {
       console.log("pre-eventBus", this.selectedLocation);
       eventBus.$emit("location", this.selectedLocation);
+      eventBus.$emit("selected-area-type", this.selectedLocation.areaType);
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+select {
+  background-color: yellow;
+  height: 2rem;
+  width: 30%;
+}
+/* .nation {
+  color: red;
+  background-color: darkgrey;
+  text-transform: uppercase;
+}
+.region {
+  color: orange;
+  background-color: lightgrey;
+} */
 </style>
 
 // &filters=areaType=utla;areaName=????
