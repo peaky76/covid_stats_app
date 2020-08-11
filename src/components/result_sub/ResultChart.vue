@@ -1,6 +1,7 @@
 <template>
   <div id="chart-area">
-    {{getKeys}}
+    {{headings}}
+    {{dataRows}}
     <!-- <GChart type="LineChart" :data="chartData" :options="chartOptions" /> -->
   </div>
 </template>
@@ -36,13 +37,22 @@ export default {
     };
   },
   computed: {
-    getKeys() {
+    headings() {
       if (this.result) {
-        // console.log(this.result);
-        // console.log(this.result[0]);
         return Object.keys(this.result[0]);
-      } else {
-        return "There are no keys!";
+      }
+    },
+    dataRows() {
+      if (this.result) {
+        let dataRows = [];
+        this.result.forEach((item) => {
+          let dataRow = [];
+          this.headings.forEach((heading) => {
+            dataRow.push(item[heading]);
+          });
+          dataRows.push(dataRow);
+        });
+        return dataRows;
       }
     },
   },
