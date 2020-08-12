@@ -1,6 +1,6 @@
 <template>
-  <div v-if="result" id="chart-area">
-    <GChart type="LineChart" :data="chartData" :options="chartOptions" />
+  <div v-if="displayData" id="chart-area">
+    <GChart type="LineChart" :data="displayData" :options="chartOptions" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { GChart } from "vue-google-charts";
 
 export default {
   name: "result-chart",
-  props: ["result"],
+  props: ["displayData"],
   components: {
     GChart,
   },
@@ -46,37 +46,6 @@ export default {
         },
       },
     };
-  },
-  computed: {
-    chartData() {
-      let dataToDisplay = [];
-      if (this.result) {
-        const newHeading = this.headings.splice(1, 1);
-        dataToDisplay.push(this.headings);
-        this.dataRows.forEach((dataRow) => {
-          dataToDisplay.push(dataRow);
-        });
-      }
-      return dataToDisplay;
-    },
-    headings() {
-      if (this.result) {
-        return Object.keys(this.result[0]);
-      }
-    },
-    dataRows() {
-      if (this.result) {
-        let dataRows = [];
-        this.result.forEach((item) => {
-          let dataRow = [];
-          this.headings.forEach((heading) => {
-            dataRow.push(item[heading]);
-          });
-          dataRows.push(dataRow);
-        });
-        return dataRows;
-      }
-    },
   },
   mounted() {
     eventBus.$on("location", (location) => {

@@ -1,14 +1,16 @@
 <template>
   <section>
-    <result-detail :result="result" />
-    <result-chart :result="result" />
+    <result-detail />
+    <result-chart :displayData="displayData" />
   </section>
 </template>
 
 <script>
 import { eventBus } from "@/main";
+import moment from "moment";
 import ResultChart from "./result_sub/ResultChart";
 import ResultDetail from "./result_sub/ResultDetail";
+import FilterBuilder from "@/helpers/FilterBuilder.js";
 
 export default {
   name: "result-display",
@@ -23,28 +25,61 @@ export default {
     };
   },
   computed: {
-    result() {
+    areaName() {
+      return this.fullData[0].areaName;
+    },
+    filteredData() {
       if (this.fullData) {
-        let unpackedData = this.fullData.data;
-        let filteredData = unpackedData.filter((item) =>
-          this.selectedDates.includes(item.date)
+        let unpackedData = this.fullData;
+        let filteredData = unpackedData.filter((dataItem) =>
+          this.selectedDates.includes(dataItem.date)
         );
+        filteredData.forEach(function (dataItem) {
+          dataItem.date = moment(dataItem.date).format("D MMM YYYY");
+          delete dataItem.areaName;
+        });
         return filteredData;
+      }
+    },
+    displayData() {
+      let displayData = [];
+      if (this.filteredData) {
+        displayData.push(this.prettyHeadings);
+        this.dataRows.forEach((dataRow) => {
+          displayData.push(dataRow);
+        });
+      }
+      return displayData;
+    },
+    headings() {
+      if (this.filteredData) {
+        return Object.keys(this.filteredData[0]);
+      }
+    },
+    prettyHeadings() {
+      return this.headings.map((heading) => FilterBuilder.makePretty(heading));
+    },
+    dataRows() {
+      if (this.filteredData) {
+        let dataRows = [];
+        this.filteredData.forEach((item) => {
+          let dataRow = [];
+          this.headings.forEach((heading) => {
+            dataRow.push(item[heading]);
+          });
+          dataRows.push(dataRow);
+        });
+        return dataRows;
       }
     },
   },
   mounted() {
-    // const baseURL = 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation&structure={%22date%22:%22date%22,%22areaType%22:%22areaType%22,%22name%22:%22areaName%22,%20%22areaCode%22:%22areaCode%22}&latestBy=newCasesByPublishDate'
-
-    //   fetch(baseURL)
-    //     .then(res => res.json())
-    //  .then(res => this.result = res);
     eventBus.$on("dates", (dates) => {
       console.log("post-eBus dates:", dates);
       this.selectedDates = dates;
     }),
       eventBus.$on("data-received", (res) => {
-        this.fullData = res;
+        this.fullData = res.data;
       });
   },
 };

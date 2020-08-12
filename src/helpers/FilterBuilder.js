@@ -5,6 +5,9 @@ const camelCaseToSentenceCase = (string) => {
 };
 
 export default {
+  makePretty(string) {
+    return camelCaseToSentenceCase(string);
+  },
   buildFilters() {
     let filterObjects = [];
     const govApiFilters = [
