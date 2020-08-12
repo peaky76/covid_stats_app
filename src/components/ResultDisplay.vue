@@ -1,6 +1,6 @@
 <template>
   <section>
-    <result-detail :displayData="displayData" :areaName="areaName" />
+    <result-detail :displayData="filteredData" :areaName="areaName" />
     <result-chart :displayData="displayData" :areaName="areaName" />
   </section>
 </template>
