@@ -1,15 +1,17 @@
 <template>
-  <v-select
-    id="location-dropdown"
-    label="areaName"
-    :options="locations"
-    @input="sendLocation"
-    v-model="selectedLocation"
-  >
-    <template v-slot:option="option">
-      <span :class="option.areaType">{{option.areaName}}</span>
-    </template>
-  </v-select>
+  <div id="location-dropdown">
+    <label for="location-dropdown" class="input-heading">Pick a location</label>
+    <v-select
+      label="areaName"
+      :options="locations"
+      @input="sendLocation"
+      v-model="selectedLocation"
+    >
+      <template v-slot:option="option">
+        <span :class="option.areaType">{{option.areaName}}</span>
+      </template>
+    </v-select>
+  </div>
 </template>
 
 <script>
@@ -24,17 +26,6 @@ export default {
       locations: [],
       selectedLocation: null,
     };
-  },
-  filters: {
-    locationFormatter: function (location) {
-      if (location.areaType === "nation") {
-        return location.areaName.toUpperCase();
-      } else if (location.areaType === "region") {
-        return "~" + location.areaName + "~";
-      } else {
-        return location.areaName;
-      }
-    },
   },
   mounted() {
     this.locations = json

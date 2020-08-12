@@ -1,6 +1,6 @@
 <template>
   <section>
-    <result-detail :displayData="filteredData" :areaName="areaName" />
+    <result-detail :filteredData="filteredData" :areaName="areaName" />
     <result-chart :displayData="displayData" :areaName="areaName" />
   </section>
 </template>
@@ -34,6 +34,7 @@ export default {
         let filteredData = unpackedData.filter((dataItem) =>
           this.selectedDates.includes(dataItem.date)
         );
+        // Amending and formatting data items
         filteredData.forEach(function (dataItem) {
           dataItem.date = moment(dataItem.date).format("D MMM YYYY");
           delete dataItem.areaName;
@@ -75,7 +76,6 @@ export default {
   },
   mounted() {
     eventBus.$on("dates", (dates) => {
-      console.log("post-eBus dates:", dates);
       this.selectedDates = dates;
     }),
       eventBus.$on("data-received", (res) => {
@@ -88,6 +88,6 @@ export default {
 <style scoped>
 section {
   display: flex;
-  background-color: #e1e5f2;;
+  background-color: #e1e5f2;
 }
 </style>
