@@ -1,7 +1,7 @@
 <template>
   <section>
-    <result-detail />
-    <result-chart :displayData="displayData" />
+    <result-detail :displayData="displayData" :areaName="areaName" />
+    <result-chart :displayData="displayData" :areaName="areaName" />
   </section>
 </template>
 
