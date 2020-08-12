@@ -10,17 +10,16 @@ import { GChart } from "vue-google-charts";
 
 export default {
   name: "result-chart",
-  props: ["displayData"],
+  props: ["areaName", "displayData"],
   components: {
     GChart,
   },
   data() {
     return {
       chartOptions: {
-        title: "",
         height: 480,
         backgroundColor: "#bfdbf7",
-        colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
+        colors: ["#1f7a8c", "#1f8c31", "#1f7a8c", "#8c1f7a", "#8c311f"],
         vAxis: {
           format: "0",
           gridlines: {
@@ -46,11 +45,6 @@ export default {
         },
       },
     };
-  },
-  mounted() {
-    eventBus.$on("location", (location) => {
-      this.chartOptions.title = location.areaName;
-    });
   },
 };
 </script>
