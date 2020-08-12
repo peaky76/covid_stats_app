@@ -1,4 +1,7 @@
 <template>
+<div>
+  <h3>Filters:</h3>
+  <p>(Please select at least one)</p>
   <span id="filters">
     <span id="checkbox-wrapper" v-for="(stat, index) in stats" :key="index">
       <span class="input-heading">{{stat}}</span>
@@ -21,6 +24,7 @@
       </fieldset>
     </span>
   </span>
+  </div>
 </template>
 
 <script>
@@ -70,7 +74,12 @@ export default {
 #checkbox-wrapper {
   text-align: center;
 }
-
+h3 {
+  margin: 0;
+}
+p {
+  margin-top: 0;
+}
 fieldset {
   display: flex;
   flex-direction: column;

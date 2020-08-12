@@ -1,6 +1,6 @@
 <template>
   <div id="location-dropdown">
-    <label for="location-dropdown" class="input-heading">Pick a location</label>
+    <label for="location-dropdown" class="input-heading">Pick a location:</label>
     <v-select
       label="areaName"
       :options="locations"

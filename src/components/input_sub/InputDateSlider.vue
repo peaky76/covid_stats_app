@@ -2,11 +2,11 @@
   <div id="dates">
     
     <div id="start">
-      <label for="start-date">Pick a start date</label>
+      <label for="start-date">Pick a start date:</label>
       <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
     </div>
     <div v-if="startDate" id="end">
-      <label for="end-date">Pick a end date</label>
+      <label for="end-date">Pick a end date:</label>
       <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
     </div>
   </div>
