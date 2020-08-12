@@ -2,7 +2,12 @@
   <div>
     <h3 v-if="result">{{result[0].areaName}}</h3>
     <h4 v-if="result">Range of Dates: {{result[0].date}} to {{result[result.length - 1].date}}</h4>
-    <p v-for="(item, index) in result" :key="index">{{item.date}}</p>
+    <p v-for="(item, index) in result" :key="index">Date: {{item.date}}
+      <ul  v-for="(heading, index) in filteredResult" :key="index">
+      <li >{{heading}}: {{item[heading]}}</li>
+      </ul>
+    </p>
+    
   </div>
 </template>
 
@@ -40,6 +45,14 @@ export default {
         return dataRows;
       }
     },
+    filteredResult() {
+      if (this.result) {
+        if (this.headings) {
+        const splicedStuff = this.headings.splice(0, 2);
+        return this.headings
+        }
+      }
+    }
   },
 };
 </script>
