@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { eventBus } from "@/main";
 import { GChart } from "vue-google-charts";
 
 export default {
@@ -16,7 +17,7 @@ export default {
   data() {
     return {
       chartOptions: {
-        title: "Placename here", //`${this.result[0].areaName}`,
+        title: "",
         height: 480,
         backgroundColor: "#98fb98",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
@@ -76,6 +77,11 @@ export default {
         return dataRows;
       }
     },
+  },
+  mounted() {
+    eventBus.$on("location", (location) => {
+      this.chartOptions.title = location.areaName;
+    });
   },
 };
 </script>

@@ -52,7 +52,6 @@ export default {
       this.selectedFilters = filters;
     }),
       eventBus.$on("location", (location) => {
-        // console.log("post-eventBus", location);
         this.selectedLocation = location;
       });
   },
