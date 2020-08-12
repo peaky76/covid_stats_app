@@ -3,7 +3,9 @@
     <h1>COVID APP</h1>
     <input-form />
     <result-display />
+    
   </div>
+  
 </template>
 
 <script>
