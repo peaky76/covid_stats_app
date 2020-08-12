@@ -1,12 +1,11 @@
 <template>
   <div id="dates">
-    
     <div id="start">
-      <label for="start-date">Pick a start date:</label>
+      <label for="start-date" class="input-heading">Pick a start date:</label>
       <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
     </div>
     <div v-if="startDate" id="end">
-      <label for="end-date">Pick a end date:</label>
+      <label for="end-date" class="input-heading">Pick a end date:</label>
       <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
     </div>
   </div>
@@ -56,15 +55,12 @@ export default {
   flex-direction: row;
 }
 #start {
-display: flex;
+  display: flex;
   flex-direction: column;
 }
 #end {
-display: flex;
+  display: flex;
   flex-direction: column;
-}
-label {
-  background-color: #1f7a8c;
 }
 input {
   background-color: #1f7a8c;

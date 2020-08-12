@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <h1>COVID APP</h1>
+    <header>
+      <img id="virus" src="./assets/virus.png" />
+      <h1>COVID STATS</h1>
+    </header>
     <input-form />
     <result-display />
-    
   </div>
-  
 </template>
 
 <script>
@@ -34,6 +35,13 @@ body {
   padding-top: 16px;
   padding-left: 16px;
 }
+header {
+  display: flex;
+}
+#virus {
+  width: 5em;
+  margin-right: 1em;
+}
 form,
 section,
 form > div,
@@ -52,5 +60,10 @@ label {
 }
 body {
   margin: 0;
+}
+.input-heading {
+  font-family: "Righteous", cursive;
+  margin-bottom: 5px;
+  color: black;
 }
 </style>

@@ -62,8 +62,4 @@ form {
   display: flex;
   align-items: center;
 }
-.input-heading {
-  font-family: "Righteous", cursive;
-  margin-bottom: 5px;
-}
 </style>
