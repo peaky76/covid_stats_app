@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       chartOptions: {
-        title: "Placename Needs to Go Here",
+        title: "Placename here", //`${this.result[0].areaName}`,
         height: 480,
         backgroundColor: "#98fb98",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
@@ -50,6 +50,7 @@ export default {
     chartData() {
       let dataToDisplay = [];
       if (this.result) {
+        const newHeading = this.headings.splice(1, 1);
         dataToDisplay.push(this.headings);
         this.dataRows.forEach((dataRow) => {
           dataToDisplay.push(dataRow);

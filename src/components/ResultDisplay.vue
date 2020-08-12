@@ -1,19 +1,19 @@
 <template>
   <section>
     <result-detail :result="result" />
-    <!-- <result-chart :result="result" /> -->
+    <result-chart :result="result" />
   </section>
 </template>
 
 <script>
 import { eventBus } from "@/main";
-// import ResultChart from "./result_sub/ResultChart";
+import ResultChart from "./result_sub/ResultChart";
 import ResultDetail from "./result_sub/ResultDetail";
 
 export default {
   name: "result-display",
   components: {
-    // "result-chart": ResultChart,
+    "result-chart": ResultChart,
     "result-detail": ResultDetail,
   },
   data() {
