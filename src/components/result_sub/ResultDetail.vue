@@ -10,22 +10,11 @@
 export default {
   name: "result-detail",
   props: ["result"],
-  // data()  {
-  //   return {
-  //     startDate: '',
-  //     endDate: ''
-  //   }
-  // },
   computed: {
-    headings() {
-      if (this.result) {
-        return Object.keys(this.result[0]);
-      }
-    },
     chartData() {
       let dataToDisplay = [];
       if (this.result) {
-        const newHeading = this.headings.splice(0, 2)
+        const newHeading = this.headings.splice(0, 2);
         dataToDisplay.push(this.headings);
         this.dataRows.forEach((dataRow) => {
           dataToDisplay.push(dataRow);
@@ -51,35 +40,12 @@ export default {
         return dataRows;
       }
     },
-  }
-  //   firstDateGetter() {
-  //     if (this.results) {
-  //       this.startDate = result[0].date
-  //       // this.endDate = result[result.length - 1].date
-  //       return this.startDate
-  //     } else {
-  //       return 'No start date selected';
-  //     }
-  //   },
-  //   lastDateGetter() {
-  //     if (this.results) {
-  //       // this.startDate = result[0].date
-  //       this.endDate = result[result.length - 1].date
-  //       return this.endDate
-  //     } else {
-  //       return 'No end date selected';
-  //     }
-  //   },
-  //   getAreaName() {
-  //     if (this.results) {
-  //       return result[0].areaName
-  //     } else {
-  //       return 'No location selected'
-  //     }
-  //   }
-  // }
+  },
 };
 </script>
 
-<style>
+<style scoped>
+div {
+  width: 30%;
+}
 </style>

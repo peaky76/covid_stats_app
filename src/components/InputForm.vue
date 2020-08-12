@@ -23,7 +23,6 @@ export default {
     return {
       selectedLocation: null,
       selectedFilters: [],
-      selectedDates: [],
     };
   },
   components: {
@@ -35,13 +34,13 @@ export default {
     refreshData() {
       if (
         this.selectedLocation &&
-        this.selectedFilters.length > 0 &&
-        this.selectedDates.length > 0
+        this.selectedFilters.length > 0
+        // this.selectedDates.length > 0
       ) {
-        StatsService.getMultipleDates(
+        StatsService.getData(
           this.selectedLocation,
-          this.selectedFilters,
-          this.selectedDates
+          this.selectedFilters
+          // this.selectedDates
         )
           .then((res) => eventBus.$emit("data-received", res))
           .catch((error) => console.log(error));
@@ -55,10 +54,6 @@ export default {
       eventBus.$on("location", (location) => {
         // console.log("post-eventBus", location);
         this.selectedLocation = location;
-      }),
-      eventBus.$on("dates", (dates) => {
-        console.log("post-eBus dates:", dates);
-        this.selectedDates = dates;
       });
   },
 };

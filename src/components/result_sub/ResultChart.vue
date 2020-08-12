@@ -1,5 +1,5 @@
 <template>
-  <div id="chart-area">
+  <div v-if="result" id="chart-area">
     <GChart type="LineChart" :data="chartData" :options="chartOptions" />
   </div>
 </template>
@@ -15,12 +15,33 @@ export default {
   },
   data() {
     return {
-      // Array will be automatically processed with visualization.arrayToDataTable function
-
       chartOptions: {
-        chart: {
-          title: "Coronavirus Stats",
-          subtitle: "Hull",
+        title: "Placename here", //`${this.result[0].areaName}`,
+        height: 480,
+        backgroundColor: "#98fb98",
+        colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
+        vAxis: {
+          format: "0",
+          gridlines: {
+            count: 5,
+          },
+        },
+        hAxis: {
+          textPosition: "out",
+          minTextSpacing: 100,
+          showEveryText: 7,
+          viewWindow: {
+            min: 0,
+          },
+          slantedText: true,
+        },
+        legend: {
+          position: "bottom",
+        },
+        animation: {
+          duration: 1000,
+          easing: "in-out",
+          startup: true,
         },
       },
     };
@@ -29,7 +50,7 @@ export default {
     chartData() {
       let dataToDisplay = [];
       if (this.result) {
-        const newHeading = this.headings.splice(1, 1)
+        const newHeading = this.headings.splice(1, 1);
         dataToDisplay.push(this.headings);
         this.dataRows.forEach((dataRow) => {
           dataToDisplay.push(dataRow);
@@ -61,11 +82,7 @@ export default {
 
 <style scoped>
 #chart-area {
-  width: 300px;
-}
-div {
-  border: 0;
+  width: 70%;
   padding: 0;
-  margin: 0;
 }
 </style>

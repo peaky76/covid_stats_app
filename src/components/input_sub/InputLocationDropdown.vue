@@ -1,12 +1,15 @@
 <template>
-  <select v-model="selectedLocation" v-if="locations" v-on:change="locationMethod">
-    <option
-      :value="location"
-      v-for="(location, index) in locations"
-      :key="index"
-      :class="location.areaType"
-    >{{location | locationFormatter}}</option>
-  </select>
+  <v-select
+    id="location-dropdown"
+    label="areaName"
+    :options="locations"
+    @input="sendLocation"
+    v-model="selectedLocation"
+  >
+    <template v-slot:option="option">
+      <span :class="option.areaType">{{option.areaName}}</span>
+    </template>
+  </v-select>
 </template>
 
 <script>
@@ -42,8 +45,7 @@ export default {
       .sort((a, b) => LocationHelper.sortLocations(a, b));
   },
   methods: {
-    locationMethod() {
-      // console.log("pre-eventBus", this.selectedLocation);
+    sendLocation() {
       eventBus.$emit("location", this.selectedLocation);
       eventBus.$emit("selected-area-type", this.selectedLocation.areaType);
     },
@@ -52,20 +54,16 @@ export default {
 </script>
 
 <style scoped>
-select {
-  background-color: yellow;
+#location-dropdown {
   height: 2rem;
   width: 30%;
 }
-/* .nation {
+.nation {
   color: red;
-  background-color: darkgrey;
   text-transform: uppercase;
 }
 .region {
   color: orange;
-  background-color: lightgrey;
-} */
+}
 </style>
 
-// &filters=areaType=utla;areaName=????
