@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <h3 v-if="displayData">{{areaName}}</h3>
-    <h4 v-if="displayData">Range of Dates: {{displayData[0].date}} to {{displayData[displayData.length - 1].date}}</h4>
-    <p v-for="(item, index) in displayData" :key="index">
+  <div v-if="filteredData">
+    <h3>{{areaName}}</h3>
+    <h4>Range of Dates: {{filteredData[0].date}} to {{filteredData[filteredData.length - 1].date}}</h4>
+    <p v-for="(item, index) in filteredData" :key="index">
       Date: {{item.date}}
-      
       <ul v-for="(value, key) in item" :key="key">
        <li v-if="key !== 'date'">{{key | prettyName}}: {{value}}</li>
-       <!-- : {{item[heading]}}</li> -->
       </ul>
     </p>
     
@@ -19,61 +17,20 @@ import FilterBuilder from "@/helpers/FilterBuilder.js";
 
 export default {
   name: "result-detail",
-  props: ["displayData", "areaName"],
+  props: ["filteredData", "areaName"],
   filters: {
     prettyName(string) {
       return FilterBuilder.makePretty(string)
     }
-  },
-  computed: {
-
-    // chartData() {
-    //   let dataToDisplay = [];
-    //   if (this.result) {
-    //     const newHeading = this.headings.splice(0, 2);
-    //     dataToDisplay.push(this.headings);
-    //     this.dataRows.forEach((dataRow) => {
-    //       dataToDisplay.push(dataRow);
-    //     });
-    //   }
-    //   return dataToDisplay;
-    // },
-    // headings() {
-    //   if (this.result) {
-    //     return Object.keys(this.result[0]);
-    //   }
-    // },
-    // dataRows() {
-    //   if (this.result) {
-    //     let dataRows = [];
-    //     this.result.forEach((item) => {
-    //       let dataRow = [];
-    //       this.headings.forEach((heading) => {
-    //         dataRow.push(item[heading]);
-    //       });
-    //       dataRows.push(dataRow);
-    //     });
-    //     return dataRows;
-    //   }
-    // },
-    // filteredResult() {      
-    //     if (this.displayData) {
-    //     // const splicedStuff = this.displayData.splice(0, 1);
-    //     // return this.displayData
-    //     let filteredResult = this.displayData
-    //     filteredResult.forEach(function (dataItem) {
-    //       delete dataItem.date;
-    //     })
-    //     return filteredResult
-    //     }
-    // }
   },
 };
 </script>
 
 <style scoped>
 div {
+  height: 448px;
   width: 30%;
-  background-color: #bfdbf7;;
+  background-color: #bfdbf7;
+  overflow:auto;
 }
 </style>

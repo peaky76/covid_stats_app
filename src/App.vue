@@ -19,12 +19,18 @@ export default {
 </script>
 
 <style>
-#app {
+#app,
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e1e5f2;
-  border: 1px solid black;
+}
+#app {
+  width: calc(80% - 16px);
+  float: left;
+  padding-top: 16px;
+  padding-left: 16px;
 }
 form,
 section,
@@ -36,6 +42,13 @@ section > div {
   background-color: #e1e5f2;
 }
 h1 {
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
+}
+input,
+label {
+  color: white;
+}
+body {
+  margin: 0;
 }
 </style>

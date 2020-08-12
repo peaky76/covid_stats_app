@@ -25,17 +25,6 @@ export default {
       selectedLocation: null,
     };
   },
-  filters: {
-    locationFormatter: function (location) {
-      if (location.areaType === "nation") {
-        return location.areaName.toUpperCase();
-      } else if (location.areaType === "region") {
-        return "~" + location.areaName + "~";
-      } else {
-        return location.areaName;
-      }
-    },
-  },
   mounted() {
     this.locations = json
       .filter(

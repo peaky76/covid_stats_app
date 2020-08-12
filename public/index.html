@@ -1,24 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&family=Rubik:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://coolors.co/palette-widget/widget.js"></script>
+    <script data-id="05923347014502263">
+      new CoolorsPaletteWidget("05923347014502263", [
+        "022b3a",
+        "1f7a8c",
+        "bfdbf7",
+        "e1e5f2",
+        "ffffff",
+      ]);
+    </script>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Rubik:wght@300&display=swap" rel="stylesheet">
-  <script src="https://coolors.co/palette-widget/widget.js"></script>
-  <script data-id="05923347014502263">new CoolorsPaletteWidget("05923347014502263", ["022b3a","1f7a8c","bfdbf7","e1e5f2","ffffff"]); </script>
-</head>
-
-<body>
-  <noscript>
-    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
-  </noscript>
-  <div id="app"></div>
-  <!-- built files will be auto injected -->
-</body>
-
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        width: calc(20% - 16px);
+        float: right;
+        padding-right: 16px;
+      "
+    >
+      <div
+        id="twitter"
+        style="
+          width: 200px;
+          height: 300px;
+          overflow: auto;
+          margin-bottom: 16px;
+        "
+      >
+        <a
+          class="twitter-timeline"
+          href="https://twitter.com/WHO?ref_src=twsrc%5Etfw"
+          >Tweets by WHO</a
+        >
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+      </div>
+      <div
+        id="twitter"
+        style="
+          width: 200px;
+          height: 300px;
+          overflow: auto;
+          margin-bottom: 16px;
+        "
+      >
+        <a
+          class="twitter-timeline"
+          href="https://twitter.com/NHS?ref_src=twsrc%5Etfw"
+          >Tweets by NHS</a
+        >
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+      </div>
+    </div>
+  </body>
 </html>
