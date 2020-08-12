@@ -1,22 +1,23 @@
 <template>
-  <div v-if="result" id="chart-area">
-    <GChart type="LineChart" :data="chartData" :options="chartOptions" />
+  <div v-if="displayData" id="chart-area">
+    <GChart type="LineChart" :data="displayData" :options="chartOptions" />
   </div>
 </template>
 
 <script>
+import { eventBus } from "@/main";
 import { GChart } from "vue-google-charts";
 
 export default {
   name: "result-chart",
-  props: ["result"],
+  props: ["displayData"],
   components: {
     GChart,
   },
   data() {
     return {
       chartOptions: {
-        title: "Placename Needs to Go Here",
+        title: "",
         height: 480,
         backgroundColor: "#bfdbf7",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
@@ -46,35 +47,10 @@ export default {
       },
     };
   },
-  computed: {
-    chartData() {
-      let dataToDisplay = [];
-      if (this.result) {
-        dataToDisplay.push(this.headings);
-        this.dataRows.forEach((dataRow) => {
-          dataToDisplay.push(dataRow);
-        });
-      }
-      return dataToDisplay;
-    },
-    headings() {
-      if (this.result) {
-        return Object.keys(this.result[0]);
-      }
-    },
-    dataRows() {
-      if (this.result) {
-        let dataRows = [];
-        this.result.forEach((item) => {
-          let dataRow = [];
-          this.headings.forEach((heading) => {
-            dataRow.push(item[heading]);
-          });
-          dataRows.push(dataRow);
-        });
-        return dataRows;
-      }
-    },
+  mounted() {
+    eventBus.$on("location", (location) => {
+      this.chartOptions.title = location.areaName;
+    });
   },
 };
 </script>
