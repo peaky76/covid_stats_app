@@ -50,4 +50,8 @@ export default {
 </script>
 
 <style>
+input {
+  background-color: #1f7a8c;
+}
+</style>
 /* let date = moment.utc(date_str); */

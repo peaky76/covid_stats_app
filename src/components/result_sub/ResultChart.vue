@@ -18,7 +18,7 @@ export default {
       chartOptions: {
         title: "Placename Needs to Go Here",
         height: 480,
-        backgroundColor: "#98fb98",
+        backgroundColor: "#bfdbf7",
         colors: ["#ffff00", "#cccc00", "999900", "666600", "333300"],
         vAxis: {
           format: "0",

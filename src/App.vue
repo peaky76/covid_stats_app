@@ -50,15 +50,19 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: palegoldenrod;
+  background-color: #e1e5f2;
   border: 1px solid black;
 }
 form,
 section,
 form > div,
 section > div {
-  border: 1px solid black;
+  /* border: 1px solid; */
   padding: 1rem;
   margin: 1rem;
+  background-color: #e1e5f2;
+}
+h1 {
+  font-family: 'Righteous', cursive;
 }
 </style>

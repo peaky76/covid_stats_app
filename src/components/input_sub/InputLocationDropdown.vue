@@ -57,6 +57,8 @@ export default {
 #location-dropdown {
   height: 2rem;
   width: 30%;
+  margin-right: 20%;
+  background-color: #1f7a8c;
 }
 .nation {
   color: red;

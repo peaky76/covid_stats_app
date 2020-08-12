@@ -65,12 +65,20 @@ fieldset {
   display: flex;
   flex-direction: column;
   width: 12rem;
+  background-color: #1f7a8c;
+  border-radius: 25px;
 }
 .filter-checkbox {
   margin-right: 1rem;
 }
 input:disabled + label {
   color: grey;
+}
+legend {
+  font-family: 'Righteous', cursive;
+}
+span {
+  font-family: 'Rubik', sans-serif;
 }
 </style>
 

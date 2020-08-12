@@ -14,5 +14,6 @@ export default {
 <style scoped>
 div {
   width: 30%;
+  background-color: #bfdbf7;;
 }
 </style>

@@ -66,9 +66,12 @@ export default {
 
 <style scoped>
 form {
-  background-color: palevioletred;
+  background-color: #e1e5f2;;
 }
-#input-selectors,
+#input-selectors {
+  display: flex;
+  align-items: center;
+}
 #input-checkboxes {
   display: flex;
   align-items: center;

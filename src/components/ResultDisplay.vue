@@ -22,6 +22,6 @@ export default {
 <style scoped>
 section {
   display: flex;
-  background-color: palegreen;
+  background-color: #e1e5f2;;
 }
 </style>
