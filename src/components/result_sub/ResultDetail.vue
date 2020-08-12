@@ -6,7 +6,7 @@
       Date: {{item.date}}
       
       <ul v-for="(value, key) in item" :key="key">
-       <li v-if="key !== 'date'">{{key}}: {{value}}</li>
+       <li v-if="key !== 'date'">{{key | prettyName}}: {{value}}</li>
        <!-- : {{item[heading]}}</li> -->
       </ul>
     </p>
@@ -15,9 +15,16 @@
 </template>
 
 <script>
+import FilterBuilder from "@/helpers/FilterBuilder.js";
+
 export default {
   name: "result-detail",
   props: ["displayData", "areaName"],
+  filters: {
+    prettyName(string) {
+      return FilterBuilder.makePretty(string)
+    }
+  },
   computed: {
 
     // chartData() {

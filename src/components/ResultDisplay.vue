@@ -38,7 +38,7 @@ export default {
           dataItem.date = moment(dataItem.date).format("D MMM YYYY");
           delete dataItem.areaName;
         });
-        return filteredData;
+        return filteredData.reverse();
       }
     },
     displayData() {
