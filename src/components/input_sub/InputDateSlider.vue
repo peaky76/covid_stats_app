@@ -1,6 +1,8 @@
 <template>
   <div>
+    <!-- Start Date: -->
     <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
+    <!-- End Date: -->
     <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
   </div>
 </template>
