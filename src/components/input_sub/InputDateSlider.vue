@@ -5,7 +5,7 @@
       <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
     </div>
     <div v-if="startDate" id="end">
-      <label for="end-date" class="input-heading">Pick a end date:</label>
+      <label for="end-date" class="input-heading">Pick an end date:</label>
       <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
     </div>
   </div>
@@ -57,6 +57,7 @@ export default {
 #start {
   display: flex;
   flex-direction: column;
+  margin-right: 1rem;
 }
 #end {
   display: flex;
