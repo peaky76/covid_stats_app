@@ -1,20 +1,30 @@
 <template>
+<div>
+  <h3>Filters:</h3>
+  <p>(Please select at least one)</p>
   <span id="filters">
-    <fieldset v-for="(stat, index) in stats" :key="index">
-      <legend>{{stat}}</legend>
-      <span class="filter-checkbox" v-for="(filter, index) in checkboxesForStat(stat)" :key="index">
-        <input
-          v-model="selectedFilters"
-          :value="`&quot;` + filter.name + `&quot;:&quot;` + filter.name + `&quot;`"
-          type="checkbox"
-          :id="filter.name"
-          v-on:change="sendFilters"
-          :disabled="filter.excludeFor.includes(currentAreaType)"
-        />
-        <label :for="filter.name">{{filter.criterion}}</label>
-      </span>
-    </fieldset>
+    <span id="checkbox-wrapper" v-for="(stat, index) in stats" :key="index">
+      <span class="input-heading">{{stat}}</span>
+      <fieldset>
+        <span
+          class="filter-checkbox"
+          v-for="(filter, index) in checkboxesForStat(stat)"
+          :key="index"
+        >
+          <input
+            v-model="selectedFilters"
+            :value="`&quot;` + filter.name + `&quot;:&quot;` + filter.name + `&quot;`"
+            type="checkbox"
+            :id="filter.name"
+            v-on:change="sendFilters"
+            :disabled="filter.excludeFor.includes(currentAreaType)"
+          />
+          <label :for="filter.name">{{filter.criterion}}</label>
+        </span>
+      </fieldset>
+    </span>
   </span>
+  </div>
 </template>
 
 <script>
@@ -61,6 +71,15 @@ export default {
 #filters {
   display: flex;
 }
+#checkbox-wrapper {
+  text-align: center;
+}
+h3 {
+  margin: 0;
+}
+p {
+  margin-top: 0;
+}
 fieldset {
   display: flex;
   flex-direction: column;
@@ -73,12 +92,6 @@ fieldset {
 }
 input:disabled + label {
   color: grey;
-}
-legend {
-  font-family: 'Righteous', cursive;
-}
-span {
-  font-family: 'Rubik', sans-serif;
 }
 </style>
 

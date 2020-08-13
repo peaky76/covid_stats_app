@@ -32,16 +32,8 @@ export default {
   },
   methods: {
     refreshData() {
-      if (
-        this.selectedLocation &&
-        this.selectedFilters.length > 0
-        // this.selectedDates.length > 0
-      ) {
-        StatsService.getData(
-          this.selectedLocation,
-          this.selectedFilters
-          // this.selectedDates
-        )
+      if (this.selectedLocation && this.selectedFilters.length > 0) {
+        StatsService.getData(this.selectedLocation, this.selectedFilters)
           .then((res) => eventBus.$emit("data-received", res))
           .catch((error) => console.log(error));
       }
@@ -60,7 +52,7 @@ export default {
 
 <style scoped>
 form {
-  background-color: #e1e5f2;;
+  background-color: #e1e5f2;
 }
 #input-selectors {
   display: flex;

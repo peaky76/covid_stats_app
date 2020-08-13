@@ -1,16 +1,17 @@
 <template>
-  <div id="location-dropdown">
-  Location:
-  <v-select
-    label="areaName"
-    :options="locations"
-    @input="sendLocation"
-    v-model="selectedLocation"
-  >
-    <template v-slot:option="option">
-      <span :class="option.areaType">{{option.areaName}}</span>
-    </template>
-  </v-select>
+  <div id="location-dropdown-container">
+    <label for="location-dropdown" class="input-heading">Pick a location:</label>
+    <v-select
+      id="location-dropdown"
+      label="areaName"
+      :options="locations"
+      @input="sendLocation"
+      v-model="selectedLocation"
+    >
+      <template id="option-holder" v-slot:option="option">
+        <span :class="option.areaType">{{option.areaName}}</span>
+      </template>
+    </v-select>
   </div>
 </template>
 
@@ -45,11 +46,10 @@ export default {
 </script>
 
 <style scoped>
-#location-dropdown {
+#location-dropdown-container {
   height: 2rem;
-  width: 30%;
+  width: 35%;
   margin-right: 20%;
-  background-color: #1f7a8c;
 }
 .nation {
   color: red;

@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <!-- Start Date: -->
-    <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
-    <!-- End Date: -->
-    <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
+  <div id="dates">
+    <div id="start">
+      <label for="start-date" class="input-heading">Pick a start date:</label>
+      <input v-model="startDate" type="date" id="start-date" v-on:change="sendDates" />
+    </div>
+    <div v-if="startDate" id="end">
+      <label for="end-date" class="input-heading">Pick a end date:</label>
+      <input v-model="endDate" type="date" id="end-date" v-on:change="sendDates" />
+    </div>
   </div>
 </template>
 
@@ -30,7 +34,6 @@ export default {
         endMoment = moment(this.startDate);
       }
 
-      console.log(endMoment);
       let allDates = [];
       for (let dates = startMoment; dates <= endMoment; dates.add(1, "days")) {
         allDates.push(dates.format("YYYY-MM-DD"));
@@ -42,18 +45,24 @@ export default {
     sendDates() {
       eventBus.$emit("dates", this.dateRange);
     },
-    // let dates = startMoment.add(1, 'days')
-    // console.log('dates', dates.format("YYYY-MM-DD"))
-    // this.duration = moment.duration(endMoment.diff(startMoment, 'days'))
-    // console.log('duration:', this.duration)
-    // console.log(this.duration().format())
   },
 };
 </script>
 
-<style>
+<style scoped>
+#dates {
+  display: flex;
+  flex-direction: row;
+}
+#start {
+  display: flex;
+  flex-direction: column;
+}
+#end {
+  display: flex;
+  flex-direction: column;
+}
 input {
   background-color: #1f7a8c;
 }
 </style>
-/* let date = moment.utc(date_str); */
