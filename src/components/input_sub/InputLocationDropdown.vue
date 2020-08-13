@@ -1,6 +1,7 @@
 <template>
+  <div id="location-dropdown">
+  Location:
   <v-select
-    id="location-dropdown"
     label="areaName"
     :options="locations"
     @input="sendLocation"
@@ -10,6 +11,7 @@
       <span :class="option.areaType">{{option.areaName}}</span>
     </template>
   </v-select>
+  </div>
 </template>
 
 <script>
@@ -24,17 +26,6 @@ export default {
       locations: [],
       selectedLocation: null,
     };
-  },
-  filters: {
-    locationFormatter: function (location) {
-      if (location.areaType === "nation") {
-        return location.areaName.toUpperCase();
-      } else if (location.areaType === "region") {
-        return "~" + location.areaName + "~";
-      } else {
-        return location.areaName;
-      }
-    },
   },
   mounted() {
     this.locations = json
