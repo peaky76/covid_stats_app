@@ -5,7 +5,7 @@
       <h1>COVID-19 STATS</h1>
     </header>
     <p class="paragraph">
-      Welcome to Covid Stats! You can search for the most up to date information
+      Welcome to Covid-19 Stats! You can search for the most up to date information
       about coronavirus cases in the UK by choosing a location, date-range and
       specifications you are interested in. Unfortunately you might come across
       some locations that not all the stats are available for.
