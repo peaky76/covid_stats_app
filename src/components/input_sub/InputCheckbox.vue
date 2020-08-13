@@ -71,9 +71,6 @@ export default {
 #filters {
   display: flex;
 }
-#checkbox-wrapper {
-  text-align: center;
-}
 h3 {
   margin: 0;
 }

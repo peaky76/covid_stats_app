@@ -4,6 +4,7 @@
       <img id="virus" src="./assets/virus.png" />
       <h1>COVID STATS</h1>
     </header>
+    <p class="paragraph">Welcome to Covid Stats! You can search for the most up to date information about coronavirus cases in the UK by choosing a location, date-range and specifications you are interested in. Unfortunately you might come across some locations that not all the stats are available for.</p>
     <input-form />
     <result-display />
   </div>
@@ -22,6 +23,10 @@ export default {
 </script>
 
 <style>
+.paragraph{
+  padding: 1rem;
+  margin: 1rem;
+}
 #app,
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -37,6 +42,8 @@ body {
 }
 header {
   display: flex;
+  padding: 1rem;
+  margin: 1rem;
 }
 #virus {
   width: 5em;
