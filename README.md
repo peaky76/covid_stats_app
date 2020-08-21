@@ -1,4 +1,4 @@
-# UK COVID-19 Stats App
+# UK COVID-19 Stats App Brief
 
 The BBC has asked you to create an app which displays the latest COVID-19 statistics on the pandemic for various locations around the country. It will be used by local news teams to produce reports for broadcast and will also be used by the general public to check the current situation in their local area.
 
